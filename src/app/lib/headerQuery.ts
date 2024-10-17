@@ -1,7 +1,8 @@
 import { gql } from "@apollo/client";
 
 export const HEADER_QUERY = gql`
- menus(where: { location: PRIMARY }) {
+  query HEADER_QUERY {
+    menus(where: { location: PRIMARY }) {
       nodes {
         id
         databaseId
@@ -24,5 +25,4 @@ export const HEADER_QUERY = gql`
       url
     }
   }
-
 `;
