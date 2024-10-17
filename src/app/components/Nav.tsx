@@ -1,86 +1,53 @@
-const Nav = () => {
-  return (
-    <nav className="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
-      <div className="container-fluid">
-        <a className="navbar-brand" href="#">
-          Navbar
-        </a>
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarColor01"
-          aria-controls="navbarColor01"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon"></span>
-        </button>
-        <div className="collapse navbar-collapse" id="navbarColor01">
-          <ul className="navbar-nav me-auto">
-            <li className="nav-item">
-              <a className="nav-link active" href="#">
-                Home
-                <span className="visually-hidden">(current)</span>
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="#">
-                Features
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="#">
-                Pricing
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="#">
-                About
-              </a>
-            </li>
-            <li className="nav-item dropdown">
-              <a
-                className="nav-link dropdown-toggle"
-                data-bs-toggle="dropdown"
-                href="#"
-                role="button"
-                aria-haspopup="true"
-                aria-expanded="false"
-              >
-                Dropdown
-              </a>
-              <div className="dropdown-menu">
-                <a className="dropdown-item" href="#">
-                  Action
-                </a>
-                <a className="dropdown-item" href="#">
-                  Another action
-                </a>
-                <a className="dropdown-item" href="#">
-                  Something else here
-                </a>
-                <div className="dropdown-divider"></div>
-                <a className="dropdown-item" href="#">
-                  Separated link
-                </a>
-              </div>
-            </li>
-          </ul>
-          <form className="d-flex">
-            <input
-              className="form-control me-sm-2"
-              type="search"
-              placeholder="Search"
-            ></input>
-            <button className="btn btn-secondary my-2 my-sm-0" type="submit">
-              Search
-            </button>
-          </form>
-        </div>
-      </div>
-    </nav>
-  );
-};
+import client from "../lib/apolloClient";
+import ApolloWrapper from "../lib/apolloProvider";
+import { HEADER_QUERY } from "../lib/headerQuery";
 
-export default Nav;
+export default async function Nav() {
+  const { data } = await client.query({
+    query: HEADER_QUERY,
+  });
+  return (
+    <ApolloWrapper>
+      <nav className="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
+        <div className="container-fluid">
+          <a className="navbar-brand" href="#">
+            {data.generalSettings.title}
+          </a>
+          <button
+            className="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarColor01"
+            aria-controls="navbarColor01"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span className="navbar-toggler-icon"></span>
+          </button>
+          <div className="collapse navbar-collapse" id="navbarColor01">
+            <ul className="navbar-nav me-auto">
+              {data.menus.nodes[0].menuItems.edges.map(({ node }: any) => (
+                <li className="nav-item" key={node.id}>
+                  <a className="nav-link active" href={node.path}>
+                    {node.label}
+                    <span className="visually-hidden">(current)</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+            <form className="d-flex">
+              <input
+                className="form-control me-sm-2"
+                type="search"
+                placeholder="Search"
+              ></input>
+              <button className="btn btn-secondary my-2 my-sm-0" type="submit">
+                Search
+              </button>
+            </form>
+          </div>
+        </div>
+      </nav>
+    </ApolloWrapper>
+  );
+}

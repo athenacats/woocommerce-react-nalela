@@ -3,7 +3,7 @@ import "./styles/index.scss";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Woocommerce Nalela tHEME",
+  title: "Woocommerce Nalela",
   description: "A woocommerce theme",
   icons: {
     icon: "favicon.ico",
