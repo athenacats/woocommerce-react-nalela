@@ -13,6 +13,12 @@ export const metadata: Metadata = {
 const Layout = (props: any) => {
   return (
     <html>
+      <head>
+        <link
+          rel="stylesheet"
+          href="https://bootswatch.com/5/quartz/bootstrap.min.css"
+        />
+      </head>
       <body>{props.children}</body>
     </html>
   );
