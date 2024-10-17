@@ -8,6 +8,7 @@ module.exports = {
   theme: {
     extend: {},
   },
+  prefix: "tw-",
   variants: {},
   plugins: [require("tailwindcss"), require("precss"), require("autoprefixer")],
 };
