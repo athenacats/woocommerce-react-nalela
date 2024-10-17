@@ -1,8 +1,9 @@
-import Header from "./components/Header";
-import Layout from "./layout";
-
 const Home = () => {
-  return <></>;
+  return (
+    <>
+      <p className="text-red-500">Hello</p>
+    </>
+  );
 };
 
 export default Home;
