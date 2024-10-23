@@ -2,14 +2,22 @@ import { Metadata } from "next";
 import "./styles/index.scss";
 import "./globals.css";
 import "bootswatch/dist/quartz/bootstrap.min.css";
+import client from "./lib/apolloClient";
+import { HEADER_QUERY } from "./lib/headerQuery";
 
-export const metadata: Metadata = {
-  title: "Woocommerce Nalela",
-  description: "A woocommerce theme",
-  icons: {
-    icon: "favicon.ico",
-  },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const { data } = await client.query({
+    query: HEADER_QUERY,
+  });
+
+  return {
+    title: data.generalSettings.title || "Default",
+    description: data.generalSettings.description || "Default",
+    icons: {
+      icon: data.mediaItems.nodes[0].sourceUrl || "favicon.ico",
+    },
+  };
+}
 
 const Layout = (props: any) => {
   return (

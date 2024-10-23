@@ -23,6 +23,12 @@ export const HEADER_QUERY = gql`
     generalSettings {
       title
       url
+      description
+    }
+    mediaItems(where: { title: "logo" }) {
+      nodes {
+        sourceUrl
+      }
     }
   }
 `;
