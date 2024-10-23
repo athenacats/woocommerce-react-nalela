@@ -14,6 +14,7 @@ export default async function ProductIndex() {
     price: product.price,
     srcset: product.image.srcSet,
     src: product.image.sourceUrl,
+    shortDescription: product.shortDescription,
   }));
   return (
     <ApolloWrapper>
