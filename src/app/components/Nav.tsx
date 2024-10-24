@@ -1,3 +1,4 @@
+import Link from "next/link";
 import client from "../lib/apolloClient";
 import ApolloWrapper from "../lib/apolloProvider";
 import { HEADER_QUERY } from "../lib/headerQuery";
@@ -10,9 +11,10 @@ export default async function Nav() {
     <ApolloWrapper>
       <nav className="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
         <div className="container-fluid">
-          <a className="navbar-brand" href="#">
+          <Link className="navbar-brand" href="/">
             {data.generalSettings.title}
-          </a>
+          </Link>
+
           <button
             className="navbar-toggler"
             type="button"
@@ -28,10 +30,10 @@ export default async function Nav() {
             <ul className="navbar-nav me-auto">
               {data.menus.nodes[0].menuItems.edges.map(({ node }: any) => (
                 <li className="nav-item" key={node.id}>
-                  <a className="nav-link active" href={node.path}>
+                  <Link className="nav-link active" href={node.path}>
                     {node.label}
                     <span className="visually-hidden">(current)</span>
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
