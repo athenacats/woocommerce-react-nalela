@@ -1,4 +1,13 @@
+import DOMPurify from "dompurify";
+
 export default function Product({ product }: any) {
+  const sanitizeHtml = (html: any) => {
+    if (typeof window !== "undefined") {
+      return DOMPurify.sanitize(html);
+    }
+    return html;
+  };
+
   return (
     <div className="card" style={{ maxWidth: "24rem" }}>
       <div className="card-body">
@@ -11,11 +20,15 @@ export default function Product({ product }: any) {
         <h4 className="card-title">{product.name}</h4>
         <h6
           className="card-subtitle mb-2 text-muted"
-          dangerouslySetInnerHTML={{ __html: product.price }}
+          dangerouslySetInnerHTML={{
+            __html: sanitizeHtml(product.price),
+          }}
         ></h6>
         <div
           className="card-text"
-          dangerouslySetInnerHTML={{ __html: product.shortDescription }}
+          dangerouslySetInnerHTML={{
+            __html: sanitizeHtml(product.shortDescription),
+          }}
         ></div>
         <div className="d-flex gap-2 ">
           <button type="button" className="btn btn-primary">
