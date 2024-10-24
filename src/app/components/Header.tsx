@@ -1,7 +1,7 @@
-import Nav from "./Nav";
+import NavWrapper from "./NavWrapper";
 
 const Header = () => {
-  return <Nav />;
+  return <NavWrapper />;
 };
 
 export default Header;
