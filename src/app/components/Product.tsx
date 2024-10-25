@@ -13,7 +13,7 @@ export default function Product({ product }: any) {
     <div className="card" style={{ maxWidth: "24rem" }}>
       <div className="card-body">
         <Link
-          href={`/product?slug=${product.slug}`}
+          href={`/product/${product.slug}`}
           className="text-decoration-none"
         >
           <img
@@ -41,7 +41,7 @@ export default function Product({ product }: any) {
           <button type="button" className="btn btn-primary">
             Buy Now
           </button>
-          <Link href={`/product?slug=${product.slug}`}>
+          <Link href={`/product/${product.slug}`}>
             <button type="button" className="btn btn-secondary">
               Read More
             </button>
