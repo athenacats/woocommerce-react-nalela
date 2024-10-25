@@ -113,7 +113,7 @@ export default async function page({ params }: any) {
                 aria-selected="false"
                 role="tab"
               >
-                Reviews
+                Reviews ({data.product.reviewCount})
               </a>
             </li>
           </ul>
@@ -140,14 +140,23 @@ export default async function page({ params }: any) {
               ></p>
             </div>
             <div className="tab-pane fade" id="reviews">
-              <p>
-                Etsy mixtape wayfarers, ethical wes anderson tofu before they
-                sold out mcsweeney's organic lomo retro fanny pack lo-fi
-                farm-to-table readymade. Messenger bag gentrify pitchfork
-                tattooed craft beer, iphone skateboard locavore carles etsy
-                salvia banksy hoodie helvetica. DIY synth PBR banksy irony.
-                Leggings gentrify squid 8-bit cred pitchfork.
-              </p>
+              {data.product.reviewCount > 0 ? (
+                <p
+                  dangerouslySetInnerHTML={{
+                    __html: sanitizeHtml(
+                      data.product.reviews.nodes.author.name
+                    ),
+                  }}
+                >
+                  <p
+                    dangerouslySetInnerHTML={{
+                      __html: sanitizeHtml(data.product.reviews.nodes.content),
+                    }}
+                  ></p>
+                </p>
+              ) : (
+                <p></p>
+              )}
             </div>
           </div>
         </div>

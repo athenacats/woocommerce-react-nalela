@@ -21,6 +21,18 @@ export const GET_PRODUCT = gql`
         name
         price
       }
+      reviews {
+        nodes {
+          author {
+            node {
+              name
+            }
+          }
+          date
+          content
+        }
+      }
+      reviewCount
     }
   }
 `;
