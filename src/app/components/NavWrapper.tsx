@@ -7,7 +7,6 @@ export default async function NavWrapper() {
   const { data } = await client.query({
     query: HEADER_QUERY,
   });
-  console.log(data);
 
   return <Navigation data={data} />;
 }
