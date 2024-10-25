@@ -9,7 +9,7 @@ export default function Navigation({ data }: { data: any }) {
   return (
     <nav className="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
       <div className="container-fluid">
-        <a className="navbar-brand" href="#">
+        <a className="navbar-brand" href="/">
           {data.generalSettings.title}
         </a>
         <button

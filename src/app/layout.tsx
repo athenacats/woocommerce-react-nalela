@@ -4,6 +4,7 @@ import "./globals.css";
 import "bootswatch/dist/quartz/bootstrap.min.css";
 import client from "./lib/apolloClient";
 import { HEADER_QUERY } from "./lib/headerQuery";
+import Header from "./components/Header";
 
 export async function generateMetadata(): Promise<Metadata> {
   const { data } = await client.query({
@@ -42,7 +43,10 @@ const Layout = (props: any) => {
         ></script>
         <script defer type="text/javascript" src="dist/purify.min.js"></script>
       </head>
-      <body>{props.children}</body>
+      <body>
+        <Header />
+        {props.children}
+      </body>
     </html>
   );
 };
