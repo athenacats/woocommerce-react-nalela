@@ -1,4 +1,5 @@
 import DOMPurify from "dompurify";
+import Link from "next/link";
 
 export default function Product({ product }: any) {
   const sanitizeHtml = (html: any) => {
@@ -11,13 +12,19 @@ export default function Product({ product }: any) {
   return (
     <div className="card" style={{ maxWidth: "24rem" }}>
       <div className="card-body">
-        <img
-          srcSet={product.srcSet}
-          src={product.src}
-          className="card-img-top img-fluid"
-          alt="..."
-        />
-        <h4 className="card-title">{product.name}</h4>
+        <Link
+          href={`/product?slug=${product.slug}`}
+          className="text-decoration-none"
+        >
+          <img
+            srcSet={product.srcSet}
+            src={product.src}
+            className="card-img-top img-fluid"
+            alt="..."
+          />
+
+          <h4 className="card-title">{product.name}</h4>
+        </Link>
         <h6
           className="card-subtitle mb-2 text-muted"
           dangerouslySetInnerHTML={{
@@ -34,9 +41,11 @@ export default function Product({ product }: any) {
           <button type="button" className="btn btn-primary">
             Buy Now
           </button>
-          <button type="button" className="btn btn-secondary">
-            Read More
-          </button>
+          <Link href={`/product?slug=${product.slug}`}>
+            <button type="button" className="btn btn-secondary">
+              Read More
+            </button>
+          </Link>
         </div>
       </div>
     </div>
