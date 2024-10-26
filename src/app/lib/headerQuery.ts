@@ -8,7 +8,7 @@ export const HEADER_QUERY = gql`
         databaseId
         name
         locations
-        menuItems {
+        menuItems(first: 100) {
           edges {
             node {
               id
