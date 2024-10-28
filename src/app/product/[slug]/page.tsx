@@ -75,7 +75,7 @@ export default async function page({ params }: any) {
         className="card border-primary mb-3 mt-4 m-auto"
         style={{
           maxHeight: "90vh",
-          maxWidth: "80vw",
+          width: "80vw",
           display: "flex",
           flexDirection: "column",
           overflow: "hidden",
