@@ -3,7 +3,7 @@ import { GET_PRODUCT } from "@/app/lib/singleProductQuery";
 import DOMPurify from "dompurify";
 
 export default async function page({ params }: any) {
-  const { slug } = params;
+  const { slug } = await params;
 
   const { data } = await client.query({
     query: GET_PRODUCT,
