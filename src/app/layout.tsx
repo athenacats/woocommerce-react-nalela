@@ -45,9 +45,7 @@ const Layout = (props: any) => {
       </head>
       <body>
         <Header />
-        <main className="container d-flex flex-wrap gap-2 justify-content-around">
-          {props.children}
-        </main>
+        <main className="container">{props.children}</main>
       </body>
     </html>
   );

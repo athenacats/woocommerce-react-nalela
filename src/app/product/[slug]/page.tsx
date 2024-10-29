@@ -30,6 +30,7 @@ export default async function page({ params }: any) {
       ? data.product.description.slice(ingredientsIndex)
       : "";
 
+  console.log(truncatedDescription);
   return (
     <>
       <div
