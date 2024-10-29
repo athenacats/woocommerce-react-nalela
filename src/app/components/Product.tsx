@@ -1,5 +1,6 @@
 import DOMPurify from "dompurify";
 import Link from "next/link";
+import AddToCart from "./AddToCart";
 
 export default function Product({ product }: any) {
   const sanitizeHtml = (html: any) => {
@@ -38,9 +39,7 @@ export default function Product({ product }: any) {
           }}
         ></div>
         <div className="d-flex gap-2 ">
-          <button type="button" className="btn btn-primary">
-            Buy Now
-          </button>
+          <AddToCart product={product} />
           <Link href={`/product/${product.slug}`}>
             <button type="button" className="btn btn-secondary">
               Read More
