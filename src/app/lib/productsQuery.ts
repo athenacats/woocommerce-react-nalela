@@ -1,8 +1,8 @@
 import { gql } from "@apollo/client";
 
 export const PRODUCTS_QUERY = gql`
-  query PRODUCTS_QUERY {
-    products(first: 20) {
+  query PRODUCTS_QUERY($first: Int!, $after: String) {
+    products(first: $first, after: $after) {
       nodes {
         id
         image {
@@ -22,6 +22,12 @@ export const PRODUCTS_QUERY = gql`
           price
         }
       }
+      pageInfo {
+        endCursor
+        hasNextPage
+      }
     }
   }
 `;
+
+console.log(PRODUCTS_QUERY);

@@ -10,7 +10,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const { data } = await client.query({
     query: HEADER_QUERY,
   });
-  console.log(data.mediaItems.nodes[0].sourceUrl);
+
   return {
     title: data.generalSettings.title || "Default",
     description: data.generalSettings.description || "Default",
