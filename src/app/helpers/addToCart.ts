@@ -11,11 +11,8 @@ export function addToCart(productId: number, qty = 1) {
   console.log(CART_ENDPOINT);
   axios
     .post(
-      CART_ENDPOINT,
-      {
-        product_Id: productId,
-        quantity: qty,
-      },
+      `${CART_ENDPOINT}?id=${productId}&quantity=${qty}`,
+
       addOrViewCart
     )
     .then((res) => {
@@ -25,6 +22,6 @@ export function addToCart(productId: number, qty = 1) {
       viewCart();
     })
     .catch((err) => {
-      console.error(err);
+      console.error("error", err);
     });
 }
