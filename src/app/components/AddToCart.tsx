@@ -1,3 +1,5 @@
+import { addToCart } from "../helpers/addToCart";
+
 export default function AddToCart(product: any) {
   return (
     <button

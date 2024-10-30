@@ -3,6 +3,7 @@ import { getApiCart } from "./api";
 import { getSession, storeSession } from "./session";
 import { CART_ENDPOINT } from "./endPoints";
 import { isEmpty } from "lodash";
+import { viewCart } from "./viewCart";
 
 export function addToCart(productId: number, qty = 1) {
   const storedSession = getSession();
@@ -21,6 +22,7 @@ export function addToCart(productId: number, qty = 1) {
       if (isEmpty(storedSession)) {
         storeSession(res?.headers?.["nalela-session"]);
       }
+      viewCart();
     })
     .catch((err) => {
       console.error(err);
