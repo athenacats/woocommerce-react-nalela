@@ -7,7 +7,7 @@ export default function AddToCart(product: any) {
       type="button"
       className="btn btn-primary"
     >
-      Buy Now
+      Add To Cart
     </button>
   );
 }
