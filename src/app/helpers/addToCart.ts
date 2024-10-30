@@ -8,7 +8,7 @@ import { viewCart } from "./viewCart";
 export function addToCart(productId: number, qty = 1) {
   const storedSession = getSession();
   const addOrViewCart = getApiCart();
-
+  console.log(CART_ENDPOINT);
   axios
     .post(
       CART_ENDPOINT,
