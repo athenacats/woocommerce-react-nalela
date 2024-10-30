@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import DOMPurify from "dompurify";
 import Link from "next/link";
 import AddToCart from "./AddToCart";
