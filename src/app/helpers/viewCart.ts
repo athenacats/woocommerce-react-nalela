@@ -8,7 +8,7 @@ export const viewCart = () => {
   axios
     .get(CART_ENDPOINT, addOrViewCart)
     .then((res) => {
-      console.log("resr", res.data);
+      console.log("res", res.data);
     })
     .catch((err) => {
       console.error(err);

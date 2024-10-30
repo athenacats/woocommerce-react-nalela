@@ -5,7 +5,6 @@ import Link from "next/link";
 
 export default function Navigation({ data }: { data: any }) {
   const pathname = usePathname(); // Get the current path
-  console.log("pathname is", pathname);
 
   interface MenuItem {
     id: string;
@@ -44,7 +43,6 @@ export default function Navigation({ data }: { data: any }) {
   // Usage example
   const menuData = data.menus.nodes[0].menuItems.edges;
   const hierarchicalMenu = buildMenuHierarchy(menuData);
-  console.log(hierarchicalMenu[0].path);
 
   const renderMenu = (items: MenuItem[]) => (
     <ul className="navbar-nav me-auto">

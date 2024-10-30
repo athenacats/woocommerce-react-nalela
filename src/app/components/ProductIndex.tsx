@@ -22,7 +22,6 @@ export default async function ProductIndex() {
   }));
 
   const initialPageInfo = data.products.pageInfo;
-  console.log("initialPageInfo", initialPageInfo);
 
   return (
     <ApolloWrapper>

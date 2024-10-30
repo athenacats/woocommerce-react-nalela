@@ -29,5 +29,3 @@ export const PRODUCTS_QUERY = gql`
     }
   }
 `;
-
-console.log(PRODUCTS_QUERY);

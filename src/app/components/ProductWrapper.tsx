@@ -1,7 +1,7 @@
 // ProductList.tsx (Client Component)
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Product from "./Product";
 import client from "../lib/apolloClient";
 import { PRODUCTS_QUERY } from "../lib/productsQuery";
@@ -44,13 +44,13 @@ export default function ProductList({
 
   const fetchProducts = async (cursor: string | null) => {
     setLoading(true);
-    console.log("here");
+
     try {
       const { data } = await client.query({
         query: PRODUCTS_QUERY,
         variables: { first: 12, after: cursor },
       });
-      console.log("new data", data);
+
       const newProducts = data.products.nodes.map((product: ProductType) => ({
         id: product.id,
         name: product.name,
@@ -73,14 +73,9 @@ export default function ProductList({
 
   const loadMore = () => {
     if (pageInfo.hasNextPage) {
-      console.log("Fetching products after cursor:", pageInfo.endCursor);
       fetchProducts(pageInfo.endCursor);
     }
-
-    console.log(typeof pageInfo.endCursor);
   };
-
-  console.log(products);
 
   return (
     <div className="d-flex flex-column">
